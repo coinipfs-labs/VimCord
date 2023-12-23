@@ -1,0 +1,169 @@
+/* 电脑 */
+@media screen and (min-width:641px) {
+  .Navbar {
+    width: 100%;
+    height: 100%;
+    z-index: 800;
+    border-right: 1px solid rgba(204, 204, 204, 0.15);
+    color: var(--color);
+    /* background: var(--Navbar-background); */
+    padding: 5%;
+display: none;
+  }
+
+  .Navicon {
+    margin-left: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+  }
+
+  .Link_children {
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .Link {
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+  }
+
+  /* 未选中 */
+  .nav_link {
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    font-size: 1.7rem;
+    color: var(--nav_link-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+  }
+
+  .nav_link:hover {
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--link-hover-background);
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+  }
+
+  /* 选中 */
+  .nav_link.active {
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    font-size: 1.7rem;
+    color: #ea7411 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+  }
+
+}
+
+
+
+/* 手机 */
+@media only screen and (max-width: 640px) {
+
+  .Navbar {
+    width: 100%;
+    height: 56px;
+ 
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    -webkit-backdrop-filter: saturate(180%) blur(16px);
+    backdrop-filter: saturate(180%) blur(16px);
+ 
+    /*   box-shadow: 0 0 1px var(--color); */
+    border-top: 1px solid rgba(204, 204, 204, 0.15);
+  }
+
+  .Navbar.hidden {
+    display: none;
+  }
+
+  .Navicon {
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .NavLink-center {
+    display: none;
+  }
+
+  /* 未选中 */
+  .nav_link {
+    height: 56px;
+    width: 25vw;
+    text-decoration: none;
+    font-size: 1.7rem;
+    color: var(--nav_link-color);
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav_link:hover {
+    height: 56px;
+    width: 25vw;
+    text-decoration: none;
+    font-size: 1.7rem;
+    color: var(--nav_link-color);
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* 选中 */
+  .nav_link.active {
+    height: 56px;
+    width: 25vw;
+    text-decoration: none;
+    font-size: 1.7rem;
+    color: #ea7411 !important;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .NavLink-right {
+    display: none;
+  }
+
+
+
+}
+
+
