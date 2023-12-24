@@ -18,10 +18,8 @@ export default function ProfileA({ params: { users } }) {
       <div className="flex items-center space-x-4">
         {profile?.metadata?.picture?.__typename === 'ImageSet' && (
           <img
-            width="150"
-            height="150"
             alt={profile.handle?.fullHandle}
-            className="rounded-xl"
+            className="rounded-xl w-[100px] h-[100px]"
             src={profile.metadata.picture.optimized?.uri}
           />
         )}
@@ -52,7 +50,7 @@ function Publications({
   return (
     <>
       {publications?.map((pub: any, index: number) => (
-        <div key={index} className="border-t   border-r border-l  rounded mb-3  sm:rounded-none hover:bg-[#54535325]">
+        <div key={index} className="border  rounded mb-3  sm:rounded-none hover:bg-[#54535325] p-2">
           <div className='max-w-[100%] whitespace-normal overflow-hidden overflow-ellipsis'>{parseTextWithLinks(pub.metadata.content)}</div>
           {pub.metadata?.asset?.image?.optimized?.uri && (
             <img

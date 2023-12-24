@@ -109,7 +109,7 @@ export default function () {
                     </NavbarContent>
 
                     <w3m-button balance={'hide'} label='Connect' />
-<ThemeButton />
+
                 </NavbarContent>
 
                 {/*                 <NavbarContent className='sm:hidden' justify='end'>

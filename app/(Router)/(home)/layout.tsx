@@ -1,7 +1,7 @@
 'use client'
 
+import './home.css'
 import { ListMusic, Newspaper, PersonStanding, Shapes, } from "lucide-react"
-
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -32,22 +32,21 @@ export default function Home({ children }) {
 
       <div className="flex">
         {linknav.map((item, index) => (
-          <div>
+          <div key={index} className={`home_nav mr-4 ${pathname === item.href ? 'active' : ''}`}>
             <Link
-              key={index}
               href={item.href}
-              className="justify-start mb-1">
+              className="flex items-center justify-start mb-1">
               {item.logo}
-              <p className="text-sm">{item.name}</p>
+              <p className="text-sm ml-2">{item.name}</p>
             </Link>
           </div>
         ))}
       </div>
 
-      <div className='md:flex min-h-[300px] mt-3'>
-        <div className="flex flex-1 pb-4 ">
+      <div className='mt-3 flex max-w-[100vw]  justify-center sm:justify-normal'>
+       
           {children}
-        </div>
+      
       </div>
 
     </div>

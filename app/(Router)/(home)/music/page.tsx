@@ -15,6 +15,7 @@ import {
 } from "lucide-react"
 
 import ReactMarkdown from 'react-markdown'
+import { Avatar } from '@nextui-org/react'
 enum PublicationMetadataMainFocusType {
   Article = "ARTICLE",
   Audio = "AUDIO",
@@ -73,17 +74,18 @@ export default function page() {
   return (
     <>
       <div className="flex flex-1 flex-wrap flex-col">
-        {
-          loadingMusicPubs && (
+
+
+        {loadingMusicPubs && (
             <div className=" flex flex-1 justify-center items-center ">
               <Loader2 className="h-12 w-12 animate-spin" />
             </div>
-          )
-        }
-        {
-          musicPubs?.map(publication => (
+          )}
+
+
+        {musicPubs?.map(publication => (
             <div
-              className="border-l-0 border-r-0 sm:border-r sm:border-l border-t border-gray-200"
+              className="border-l border-r sm:border-r-0 sm:border-l-0 border-t border-gray-200"
               key={publication.id}
               onClick={() => window.open(`https://share.lens.xyz/p/${publication.id}`, '_blank')}
             >
@@ -91,6 +93,9 @@ export default function page() {
 
 
                 <div className="flex">
+
+                  <Avatar src={publication.by?.metadata?.picture?.optimized?.uri} alt={publication.by.handle.localName} />
+
                   <div className="ml-4">
                     <h3 className="mb-1 font-medium leading-none">{publication.by.handle.localName}.{publication.by.handle.namespace}</h3>
                     <p className="text-xs text-muted-foreground">{publication.by.handle.fullName}</p>
@@ -100,7 +105,7 @@ export default function page() {
 
                 <div>
                   <img
-                    className={` max-w-full sm:max-w-[500px] mb-3 rounded-2xl h-auto object-cover `}
+                    className={` max-w-full sm:max-w-[80vw] mb-3 rounded-2xl object-cover `}
                     src={publication.__typename === 'Post' ?
                       publication.metadata?.asset?.cover?.optimized?.uri ?
                         publication.metadata?.asset?.cover?.optimized?.uri :
