@@ -6,7 +6,7 @@ import { WagmiConfig } from 'wagmi'
 import { mainnet,polygon,polygonMumbai,polygonZkEvm,polygonZkEvmTestnet, } from 'viem/chains'
 
 
-const projectId = '0476d0db8624949628b1cd80de6e3ccd'
+const projectId = process.env.WEB3MODAL || "";
 
 
 const metadata = {
