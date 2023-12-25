@@ -36,7 +36,7 @@ enum PublicationMetadataMainFocusType {
   Video = "VIDEO"
 }
 
-export default function page() {
+export default function Page() {
 
   let { data: profiles, error: profileError, loading: loadingProfiles } = useExploreProfiles({
     limit: LimitType.TwentyFive,

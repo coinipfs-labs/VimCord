@@ -1,5 +1,5 @@
 import ThemeButton from '@/components/ThemeButton'
-export default function message() {
+export default function Message() {
   return (
     <>
     message

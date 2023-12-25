@@ -1,4 +1,4 @@
-export default function page({ params:{postsid} }) {
+export default function Page({ params:{postsid} }) {
   return (
     <div>postsid {postsid}</div>
   )

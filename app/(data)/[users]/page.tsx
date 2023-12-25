@@ -5,6 +5,7 @@ import {
   useProfile, usePublications, Profile, LimitType, PublicationType
 } from '@lens-protocol/react-web'
 import { Avatar } from '@nextui-org/react'
+import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 
 export default function ProfileA({ params: { users } }) {
@@ -19,8 +20,10 @@ export default function ProfileA({ params: { users } }) {
     <div className='max-w-4xl mx-auto'>
       <div className="flex items-center space-x-4">
         {profile?.metadata?.picture?.__typename === 'ImageSet' && (
-          <img
+          <img 
             alt='posts data'
+            width={100}
+            height={100}
             className="rounded-xl w-[100px] h-[100px]"
             src={profile.metadata.picture.optimized?.uri}
           />
@@ -71,9 +74,8 @@ function Publications({
             </ReactMarkdown>
           </div>
           {pub.metadata?.asset?.image?.optimized?.uri && (
-            <img
-              width="400"
-              height="400"
+            <img 
+             
               alt="user posts img"
               className='rounded-xl mt-6 mb-2'
               src={pub.metadata?.asset?.image?.optimized?.uri}

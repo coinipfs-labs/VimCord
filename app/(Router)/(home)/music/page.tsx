@@ -8,7 +8,7 @@ import {
   ExplorePublicationType,
   LimitType
 } from '@lens-protocol/react-web'
-
+import Image from "next/image"
 
 
 import ReactMarkdown from 'react-markdown'
@@ -34,7 +34,7 @@ enum PublicationMetadataMainFocusType {
   Transaction = "TRANSACTION",
   Video = "VIDEO"
 }
-export default function page() {
+export default function Page() {
 
   let { data: profiles, error: profileError, loading: loadingProfiles } = useExploreProfiles({
     limit: LimitType.TwentyFive,
@@ -104,8 +104,9 @@ export default function page() {
 
 
               <div>
-                <img
+                <img 
                   className={`max-w-[400px] h-auto sm:max-w-[100%]   sm:h-auto mb-3  sm:rounded-none  rounded-2xl object-cover`}
+                  alt='audio img'
                   src={publication.__typename === 'Post' ?
                     publication.metadata?.asset?.cover?.optimized?.uri ?
                       publication.metadata?.asset?.cover?.optimized?.uri :

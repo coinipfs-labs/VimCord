@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image"
 import { Button } from "@nextui-org/react";
 import { getAccount } from "@wagmi/core";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
@@ -43,7 +44,7 @@ function Profile({ address }) {
           <div className='border rounded-lg p-10'>
             <div>
               {profile.metadata?.picture?.__typename === "ImageSet" && (
-                <img
+                <img 
                   src={profile?.metadata?.picture?.optimized?.uri}
                   className='rounded w-[200px]'
                   alt="user profile picture"

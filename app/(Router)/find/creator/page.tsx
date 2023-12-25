@@ -9,12 +9,13 @@ import {
   LimitType
 } from '@lens-protocol/react-web'
 
-import { Loader2 } from "lucide-react"
+
 import { Avatar } from '@nextui-org/react'
+import { RiLoader4Line } from 'react-icons/ri'
 
 
 
-export default function page() {
+export default function Page() {
 
   let { data: profiles, error: profileError, loading: loadingProfiles } = useExploreProfiles({
     limit: LimitType.TwentyFive,
@@ -72,7 +73,7 @@ export default function page() {
         {
           loadingProfiles && (
             <div className=" flex flex-1 justify-center items-center ">
-              <Loader2 className="h-12 w-12 animate-spin" />
+              <RiLoader4Line className="h-12 w-12 animate-spin" />
             </div>
           )
         }
