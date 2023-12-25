@@ -4,3 +4,21 @@
 
 
 
+
+:root {
+  --color: #000;
+  --background-nav: #fff;
+  /* Navbar */
+  --Navbar-background: #fffffff7 !important;
+  --nav_link-color: #545353d3 !important;
+
+}
+
+.dark {
+  --color: #fff !important;
+  --background-nav: #000 !important;
+  /* Navbar */
+  --Navbar-background: #000000 !important;
+  --nav_link-color: #ece1e1d3 !important;
+
+}

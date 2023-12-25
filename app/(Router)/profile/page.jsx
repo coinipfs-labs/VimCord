@@ -2,7 +2,6 @@
 import { Button } from "@nextui-org/react";
 import { getAccount } from "@wagmi/core";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
-import ThemeButton from "@/components/ThemeButton";
 import { useProfiles } from "@lens-protocol/react-web";
 import { disconnect } from "@wagmi/core";
 export default function ProfileWrapper() {
@@ -16,7 +15,7 @@ export default function ProfileWrapper() {
   return (
     <div>
       已连接,如果没有显示，说明您暂未加入镜头协议
-      <ThemeButton />
+  
       <Profile address={address} />
 
     </div>

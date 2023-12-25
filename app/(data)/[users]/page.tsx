@@ -1,9 +1,11 @@
 // app/profile/[handle]/page.tsx
 'use client'
+import InteractCard from '@/app/components/postslist/InteractCard'
 import {
   useProfile, usePublications, Profile, LimitType, PublicationType
 } from '@lens-protocol/react-web'
-import { Grab, Heart, MessageSquare, Repeat2 } from 'lucide-react'
+import { Avatar } from '@nextui-org/react'
+import ReactMarkdown from 'react-markdown'
 
 export default function ProfileA({ params: { users } }) {
   const namespace = users.split('.')[1]
@@ -14,7 +16,7 @@ export default function ProfileA({ params: { users } }) {
   if (loading) return <p className="p-14">Loading ...</p>
 
   return (
-    <div >
+    <div className='max-w-4xl mx-auto'>
       <div className="flex items-center space-x-4">
         {profile?.metadata?.picture?.__typename === 'ImageSet' && (
           <img
@@ -50,8 +52,24 @@ function Publications({
   return (
     <>
       {publications?.map((pub: any, index: number) => (
-        <div key={index} className="border  rounded mb-3  sm:rounded-none hover:bg-[#54535325] p-2">
-          <div className='max-w-[100%] whitespace-normal overflow-hidden overflow-ellipsis'>{parseTextWithLinks(pub.metadata.content)}</div>
+        <div key={index} className="border border-b-0   sm:rounded-none hover:bg-[#54535325] pt-6 pb-2 px-6 sm:px-2">
+          {/* users  */}
+          <div className="space-y-3 mb-4">
+            <div className="flex" >
+              <Avatar src={pub.by?.metadata?.picture?.optimized?.uri} alt={pub.by.handle.localName} onClick={() => window.open(`/${pub.by.handle.localName}.lens`)} />
+
+              <div className="sm:ml-3 ml-4">
+                <h3 className="mb-1 font-medium leading-none caret-zinc-400" onClick={() => window.open(`/${pub.by.handle.localName}.lens`)}>{pub.by.handle.localName}.{pub.by.handle.namespace}</h3>
+                <p className="text-xs text-muted-foreground" onClick={() => window.open(`/${pub.by.handle.localName}.lens`)}>{pub.by.metadata?.displayName}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className='max-w-[100%] whitespace-normal overflow-hidden overflow-ellipsis'>
+            <ReactMarkdown className=" mt-4 break-words">
+              {pub.metadata.content.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '[LINK]($1)')}
+            </ReactMarkdown>
+          </div>
           {pub.metadata?.asset?.image?.optimized?.uri && (
             <img
               width="400"
@@ -61,6 +79,7 @@ function Publications({
               src={pub.metadata?.asset?.image?.optimized?.uri}
             />
           )}
+          <InteractCard dataname={pub} />
 
         </div>
       ))
@@ -69,25 +88,3 @@ function Publications({
   )
 }
 
-function parseTextWithLinks(text: string) {
-  const urlRegex = /(https?:\/\/[^\s]+)/g;
-  return text.split(urlRegex).map((part, index) => {
-    if (index % 2 === 1) {
-      // 链接部分，将其转换为 <a> 标签
-      return (
-        <a
-          key={index}
-          href={part}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:underline  caret-primary"
-        >
-          {part}
-        </a>
-      );
-    } else {
-      // 文本部分
-      return part;
-    }
-  });
-}

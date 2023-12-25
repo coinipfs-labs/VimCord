@@ -43,14 +43,14 @@ export default function page() {
 
   return (
     <>
-      <div className="flex  p-4 sm:p-0 max-w-[1536px] mx-auto">
+      <div className="flex sm:p-0 max-w-[1536px] mx-auto">
 
-        <div className='border-t border-b  border-r border-l sm:border-l-0 sm:border-r-0 flex  flex-wrap sm:flex-col mx-auto'>
+        <div className='border-t border-b  border-r border-l sm:border-l-0 sm:border-r-0 flex  flex-wrap sm:flex-col'>
           {
             profiles?.map(profile => (
               <a
                 key={profile.id}
-                className=" p-4 cursor-pointer  border-t border-b min-w-[20%]"
+                className=" p-4 cursor-pointer  border-t border-b min-w-[20%] md:min-w-[25%] lg:min-w-[25%] sm:min-w-[100vw]"
                 rel="no-opener"
                 target="_blank"
                 href={`/${profile.handle.localName}.lens`}>

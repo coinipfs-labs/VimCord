@@ -1,9 +1,11 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import './home.css'
 import { ListMusic, Newspaper, PersonStanding, Shapes, } from "lucide-react"
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { RiFileTextLine, RiImageLine, RiMusic2Line, RiShapesLine, RiVideoLine } from 'react-icons/ri'
 
 
 export default function Home({ children }) {
@@ -12,43 +14,54 @@ export default function Home({ children }) {
   const linknav = [
     {
       href: "/",
-      name: "首页",
-      logo: <Newspaper size={16} />
+      name: "推荐",
+      logo: <RiShapesLine  />
+    },
+    {
+      href: "/article",
+      name: "文章",
+      logo: <RiFileTextLine  />
+    },
+    {
+      href: "/image",
+      name: "图像",
+      logo: <RiImageLine  />
     },
     {
       href: "/music",
       name: "音乐",
-      logo: <ListMusic size={16} />
+      logo: <RiMusic2Line  />
     },
     {
-      href: "/",
-      name: "收集",
-      logo: <Shapes size={16} />
+      href: "/video",
+      name: "视频",
+      logo: <RiVideoLine  />
     }
   ]
   return (
-    <div className="mx-auto max-w-[1536px] pb-12">
+    <div className="mx-auto max-w-[1536px] justify-center pb-12  flex  flex-col">
 
 
-      <div className="flex">
+      <div className="flex flex-row sm:flex-row border h-16 sm:w-screen   items-center sm:fixed sm:top-0 sm:backdrop-blur-2xl max-w-4xl mx-auto w-[100%]">
         {linknav.map((item, index) => (
-          <div key={index} className={`home_nav mr-4 ${pathname === item.href ? 'active' : ''}`}>
-            <Link
-              href={item.href}
-              className="flex items-center justify-start mb-1">
-              {item.logo}
-              <p className="text-sm ml-2">{item.name}</p>
-            </Link>
+          <div className='mx-auto justify-around w-[20%] flex hover:bg-[#6463631a]'>
+
+          <Link key={index} href={item.href} className={`home_nav flex items-center justify-center w-[100%] h-[64px] sm:flex-col sm:justify-around ${pathname === item.href ? 'active' : ''}`}>
+              <div className=' justify-center color-[#545353d3] text-2xl sm:text-xl'> {item.logo} </div>
+              <p className="text-sm ml-2 sm:ml-0 ">{item.name}</p>
+          </Link>
           </div>
         ))}
       </div>
 
-      <div className='mt-3 flex max-w-[100vw]  justify-center sm:justify-normal'>
-       
-          {children}
-      
+      <div className=' flex  sm:justify-normal sm:pt-[64px]'>
+
+        {children}
+
       </div>
 
     </div>
   )
 }
+
+

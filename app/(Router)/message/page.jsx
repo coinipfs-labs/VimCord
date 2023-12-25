@@ -1,5 +1,9 @@
+import ThemeButton from '@/components/ThemeButton'
 export default function message() {
   return (
-    <div>message</div>
+    <>
+    message
+    <ThemeButton />
+    </>
   )
 }

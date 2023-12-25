@@ -7,6 +7,7 @@ import "./Navbar.css";
 import { getAccount } from "@wagmi/core";
 import { GoHome, GoHomeFill, GoHeart, GoHeartFill, GoBell, GoBellFill, GoPerson, GoPersonFill, GoSignIn } from "react-icons/go";
 import { AiOutlineMessage, AiFillMessage, AiOutlineAppstore, AiFillAppstore } from "react-icons/ai";
+import { RiApps2Fill, RiApps2Line, RiHome5Fill, RiHome5Line, RiMessage2Fill, RiMessage2Line, RiMessage3Fill, RiMessage3Line, RiUserFill, RiUserLine } from "react-icons/ri";
 
 
 
@@ -19,36 +20,36 @@ export default function Navbar() {
   return (
     <>
 
-      <div className={`Navbar`}>
+      <div className='Navbar'>
 
 
         <NavLink
           href='/'
-          activeHrefs={['/']}
-          icon={<GoHome className="Navicon" />}
-          activeIcon={<GoHomeFill className="Navicon" />}
+          activeHrefs={['/',"/article","/image","/music","/video",]}
+          icon={<RiHome5Line className="Navicon" />}
+          activeIcon={<RiHome5Fill className="Navicon" />}
         />
 
         <NavLink
           href='/find'
           activeHrefs={['/find']}
-          icon={<AiOutlineAppstore  className="Navicon" />}
-          activeIcon={<AiFillAppstore  className="Navicon" />}
-       />
+          icon={<RiApps2Line className="Navicon" />}
+          activeIcon={<RiApps2Fill className="Navicon" />}
+        />
 
         <NavLink
           href='/message'
           activeHrefs={['/message']}
-          icon={<AiOutlineMessage className="Navicon" />}
-          activeIcon={<AiFillMessage className="Navicon" />}
+          icon={<RiMessage2Line className="Navicon" />}
+          activeIcon={<RiMessage2Fill className="Navicon" />}
         />
 
         {address ? (
           <NavLink
             href={`/profile`}
             activeHrefs={[`/profile`]}
-            icon={<GoPerson className="Navicon" />}
-            activeIcon={<GoPersonFill className="Navicon" />}
+            icon={<RiUserLine className="Navicon" />}
+            activeIcon={<RiUserFill className="Navicon" />}
           />
 
         ) : (
@@ -56,8 +57,8 @@ export default function Navbar() {
           <NavLink
             href={`/profile/sin`}
             activeHrefs={[`/profile/sin`]}
-            icon={<GoPerson  className="Navicon" />}
-            activeIcon={<GoPersonFill className="Navicon" />}
+            icon={<RiUserLine className="Navicon" />}
+            activeIcon={<RiUserFill className="Navicon" />}
           />
         )}
 

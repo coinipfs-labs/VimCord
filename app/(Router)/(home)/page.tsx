@@ -8,14 +8,17 @@ import {
   ExplorePublicationType,
   LimitType
 } from '@lens-protocol/react-web'
-import {
-  Loader2, ListMusic, Newspaper,
-  PersonStanding, Shapes,
-  MessageSquare, Repeat2, Heart, Grab, ArrowRight
-} from "lucide-react"
+import InteractCard from '@/components/postslist/InteractCard';
 import { Avatar } from "@nextui-org/react";
 import ReactMarkdown from 'react-markdown'
-import Link from 'next/link'
+import Link from 'next/link';
+import { RiChat1Line, RiHeart3Line, RiLoader4Line, RiRepeat2Line, RiShieldCheckLine } from "react-icons/ri";
+import Posimg from '@/app/components/postslist/Posimg';
+import Avatarimg from '@/app/components/postslist/Avatarimg';
+import AvatarName from '@/app/components/postslist/AvatarName';
+import PosText from '@/app/components/postslist/PosText';
+
+
 enum PublicationMetadataMainFocusType {
   Article = "ARTICLE",
   Audio = "AUDIO",
@@ -34,6 +37,7 @@ enum PublicationMetadataMainFocusType {
   Transaction = "TRANSACTION",
   Video = "VIDEO"
 }
+
 export default function page() {
 
   let { data: profiles, error: profileError, loading: loadingProfiles } = useExploreProfiles({
@@ -73,73 +77,49 @@ export default function page() {
 
   return (
     <>
-      <div className="flex flex-1 flex-wrap flex-col max-w-4xl">
+      <div className="flex flex-1 flex-wrap flex-col max-w-4xl mx-auto border-t">
         {
           loadingPubs && (
             <div className=" flex flex-1 justify-center items-center ">
-              <Loader2 className="h-12  animate-spin" />
+              <RiLoader4Line className="h-12 w-12 animate-spin" />
             </div>
           )
         }
-        {publications?.map(publication => (
 
 
-          <div className="sm:border-l-0 sm:border-r-0 border-r border-l border-t  hover:bg-[#54535325]" >
+        {publications?.map((publication: any) => (
+          <div className="border-b border-l border-r  sm:border-r-0 sm:border-l-0 hover:bg-[#6463631a]" >
 
 
-            <div className="space-y-3 mb-4 pt-6 pb-2 sm:px-4 px-6"
-              key={publication.id}
-             /*  onClick={() => window.open(`/posts/${publication.id}`)} */>
+            <div className=" p-6 sm:p-2  sm:w-screen" key={publication.id} >
 
               {/* users  */}
-              <div className="flex-1" >
-                <Avatar src={publication.by?.metadata?.picture?.optimized?.uri} alt={publication.by.handle.localName} onClick={() => window.open(`/${publication.by.handle.localName}.lens`)} />
-
-                <div className="sm:ml-1 ml-4">
-                  <h3 className="mb-1 font-medium leading-none" onClick={() => window.open(`/${publication.by.handle.localName}.lens`)}>{publication.by.handle.localName}.{publication.by.handle.namespace}</h3>
-                  <p className="text-xs text-muted-foreground" onClick={() => window.open(`/${publication.by.handle.localName}.lens`)}>{publication.by.metadata?.displayName}</p>
+              <div className="space-y-3 flex">
+                <div className="flex" >
+                  <Avatarimg dataname={publication} />
+                  <AvatarName dataname={publication} />
                 </div>
               </div>
 
+
               {/* users posts data  */}
-              <Link className='max-w-[100vw]' href={`/${publication.by.handle.localName}.lens/posts/${publication.id}`}>
-                {/*                   <ReactMarkdown className=" mt-4 break-words">
-                    {publication.metadata.content.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '[LINK]($1)')}
-                  </ReactMarkdown>
- */}
-                <PublicationContent content={publication.metadata.content} />
+              <div className='max-w-full justify-start sm:max-w-[100%]'
+                onClick={() => window.open(`/${publication.by.handle.localName}.lens/posts/${publication.id}`)}>
 
-                <img
-                  className={(` h-auto max-w-[80%] sm:max-w-[80vw] mb-3  sm:rounded-none  rounded-2xl object-cover`)}
-                  src={publication.__typename === 'Post' ? publication.metadata?.asset?.image?.optimized.uri : ''}
-                />
+                {/* text */}
+                <PosText content={publication.metadata.content} />
 
-              </Link>
-
-
-              <div className='px-2 sm:px-2'>
-                <button className="rounded-full mr-1" onClick={() => window.open(`/${publication.by.handle.localName}.lens/posts/${publication.id}`)} >
-                  <MessageSquare className="mr-2 h-4 w-4" />
-                  {publication.stats.comments}
-                </button>
-                <button className="rounded-full mr-1"  >
-                  <Repeat2 className="mr-2 h-4 w-4" />
-                  {publication.stats.mirrors}
-                </button>
-                <button className="rounded-full mr-1"  >
-                  <Heart className="mr-2 h-4 w-4" />
-                  {publication.stats.upvotes}
-                </button>
-                <button className="rounded-full mr-1"  >
-                  <Grab className="mr-2 h-4 w-4" />
-                  {publication.stats.collects}
-                </button>
+                {/* img */}
+                <Posimg src={publication.__typename === 'Post' ? publication.metadata?.asset?.image?.optimized.uri : ''} />
               </div>
 
+
+
+              {/* InteractCard */}
+              <InteractCard dataname={publication} />
+
+
             </div>
-
-
-
           </div>
         ))}
       </div>
@@ -147,35 +127,3 @@ export default function page() {
   )
 }
 
-
-
-
-
-
-const MAX_LINES = 10;
-
-const PublicationContent = ({ content }) => {
-  const [expanded, setExpanded] = useState(false);
-
-  // 将文本按行分割
-  const lines = content.split('\n');
-
-  // 取前 MAX_LINES 行，或全部行，根据 expanded 状态决定
-  const displayedLines = expanded ? lines : lines.slice(0, MAX_LINES);
-
-  return (
-    <div className=''>
-      <ReactMarkdown className="mt-4 break-words h-auto max-w-[90%]">
-        {displayedLines.join('\n')}
-      </ReactMarkdown>
-      {lines.length > MAX_LINES && (
-        <button
-          className="text-blue-500 cursor-pointer"
-          onClick={() => setExpanded(!expanded)}
-        >
-          {expanded ? '收起' : '更多'}
-        </button>
-      )}
-    </div>
-  );
-};

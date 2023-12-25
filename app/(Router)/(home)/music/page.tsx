@@ -16,6 +16,8 @@ import {
 
 import ReactMarkdown from 'react-markdown'
 import { Avatar } from '@nextui-org/react'
+import { RiChat1Line, RiHeart3Line, RiRepeat2Line, RiRepeatFill, RiShieldCheckLine } from 'react-icons/ri'
+import InteractCard from '@/app/components/postslist/InteractCard'
 enum PublicationMetadataMainFocusType {
   Article = "ARTICLE",
   Audio = "AUDIO",
@@ -73,78 +75,63 @@ export default function page() {
 
   return (
     <>
-      <div className="flex flex-1 flex-wrap flex-col">
+      <div className="flex flex-1 flex-wrap flex-col max-w-4xl mx-auto">
 
 
         {loadingMusicPubs && (
-            <div className=" flex flex-1 justify-center items-center ">
-              <Loader2 className="h-12 w-12 animate-spin" />
-            </div>
-          )}
+          <div className=" flex flex-1 justify-center items-center ">
+            <Loader2 className="h-12 w-12 animate-spin" />
+          </div>
+        )}
 
 
         {musicPubs?.map(publication => (
-            <div
-              className="border-l border-r sm:border-r-0 sm:border-l-0 border-t border-gray-200"
-              key={publication.id}
-              onClick={() => window.open(`https://share.lens.xyz/p/${publication.id}`, '_blank')}
-            >
-              <div className="space-y-3 mb-4 p-4">
+          <div
+            className="border-b border-l border-r sm:border-r-0 sm:border-l-0 hover:bg-[#6463631a]"
+            key={publication.id}
+            onClick={() => window.open(`https://share.lens.xyz/p/${publication.id}`, '_blank')}
+          >
+            <div className="space-y-3 mb-4 p-4">
 
 
-                <div className="flex">
+              <div className="flex">
 
-                  <Avatar src={publication.by?.metadata?.picture?.optimized?.uri} alt={publication.by.handle.localName} />
+                <Avatar src={publication.by?.metadata?.picture?.optimized?.uri} alt={publication.by.handle.localName} />
 
-                  <div className="ml-4">
-                    <h3 className="mb-1 font-medium leading-none">{publication.by.handle.localName}.{publication.by.handle.namespace}</h3>
-                    <p className="text-xs text-muted-foreground">{publication.by.handle.fullName}</p>
-                  </div>
+                <div className="ml-4">
+                  <h3 className="mb-1 font-medium leading-none">{publication.by.handle.localName}.{publication.by.handle.namespace}</h3>
+                  <p className="text-xs text-muted-foreground">{publication.by.handle.fullName}</p>
                 </div>
-
-
-                <div>
-                  <img
-                    className={` max-w-full sm:max-w-[80vw] mb-3 rounded-2xl object-cover `}
-                    src={publication.__typename === 'Post' ?
-                      publication.metadata?.asset?.cover?.optimized?.uri ?
-                        publication.metadata?.asset?.cover?.optimized?.uri :
-                        publication.metadata?.asset?.cover?.optimized?.raw?.uri : ''}
-                  />
-                  <audio controls>
-                    <source
-                      type={publication.metadata?.asset?.audio?.optimized?.mimeType}
-                      src={publication.metadata?.asset?.audio?.optimized?.uri}
-                    />
-                  </audio>
-                  <ReactMarkdown className=" mt-4 break-words ">
-                    {publication.metadata.content.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '[LINK]($1)')}
-                  </ReactMarkdown>
-                </div>
-
-                <div>
-                  <button className="rounded-full mr-1"    >
-                    <MessageSquare className="mr-2 h-4 w-4" />
-                    {publication.stats.comments}
-                  </button>
-                  <button className="rounded-full mr-1"  >
-                    <Repeat2 className="mr-2 h-4 w-4" />
-                    {publication.stats.mirrors}
-                  </button>
-                  <button className="rounded-full mr-1"  >
-                    <Heart className="mr-2 h-4 w-4" />
-                    {publication.stats.upvotes}
-                  </button>
-                  <button className="rounded-full mr-1"  >
-                    <Grab className="mr-2 h-4 w-4" />
-                    {publication.stats.collects}
-                  </button>
-                </div>
-
               </div>
 
+
+              <div>
+                <img
+                  className={`max-w-[400px] h-auto sm:max-w-[100%]   sm:h-auto mb-3  sm:rounded-none  rounded-2xl object-cover`}
+                  src={publication.__typename === 'Post' ?
+                    publication.metadata?.asset?.cover?.optimized?.uri ?
+                      publication.metadata?.asset?.cover?.optimized?.uri :
+                      publication.metadata?.asset?.cover?.optimized?.raw?.uri : ''}
+                />
+                <audio controls>
+                  <source
+                    type={publication.metadata?.asset?.audio?.optimized?.mimeType}
+                    src={publication.metadata?.asset?.audio?.optimized?.uri}
+                  />
+                </audio>
+                <ReactMarkdown className=" mt-4 break-words ">
+                  {publication.metadata.content.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '[LINK]($1)')}
+                </ReactMarkdown>
+              </div>
+
+
+              <InteractCard dataname={publication} />
+
+
             </div>
-          ))
+
+          </div>
+        ))
         }
       </div>
     </>

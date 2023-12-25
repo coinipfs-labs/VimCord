@@ -18,17 +18,19 @@ import {
     Button,
 } from "@nextui-org/react";
 import { GoSearch } from "react-icons/go";
-export default function () {
+
+export default function Header() {
     const pathname = usePathname();
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     return (
         <>
             <Navbar
-                isBordered
+                isBordered={false}
                 isMenuOpen={isMenuOpen}
                 onMenuOpenChange={setIsMenuOpen}
-                maxWidth={"2xl"} >
+                maxWidth={"2xl"} 
+                className="sm:hidden flex">
                 {/* 左 */}
                 <NavbarContent>
                     {/* 手机 */}
@@ -47,7 +49,7 @@ export default function () {
                         </motion.div>
                     </NavbarBrand>
                     {/* 中 */}
-                    <NavbarContent className='sm:hidden flex gap-4 md:gap-1'  justify="center">
+                    <NavbarContent className='sm:hidden flex gap-4 md:gap-1' justify="center">
                         <NavbarItem>
                             <Link
                                 href='/'

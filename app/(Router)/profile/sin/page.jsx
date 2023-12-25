@@ -12,7 +12,7 @@ export default function sin() {
   const router = useRouter();
   const handleConnectWallet = async () => {
     await open();
-    router.push("/my");
+    router.push("/profile");
   };
   return (
     <>

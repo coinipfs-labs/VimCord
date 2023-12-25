@@ -1,3 +1,5 @@
 .home_nav.active {
     color: #ea7411;
+    border-bottom-width: 1px;
+    border-bottom-color: #ea7411;
 }
