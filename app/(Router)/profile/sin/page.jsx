@@ -1,11 +1,11 @@
 "use client";
 import { Button } from "@nextui-org/react";
-import { useWeb3Modal,useDisconnect } from "@web3modal/wagmi/react";
+import { useWeb3Modal,/* useDisconnect */ } from "@web3modal/wagmi/react";
 import { getAccount } from "@wagmi/core";
 
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-export default function sin() {
+export default function Sin() {
   const { open } = useWeb3Modal();
   const { address } = getAccount();
 /*   const { disconnect } = useDisconnect() */
@@ -31,9 +31,9 @@ export default function sin() {
       {address && (
         <div>
 
-        <Button onClick={useDisconnect} variant='secondary' className='mr-4'>
+{/*         <Button onClick={useDisconnect} variant='secondary' className='mr-4'>
           Disconnect
-        </Button>
+        </Button> */}
         </div>
       )}
     </>

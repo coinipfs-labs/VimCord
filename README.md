@@ -1,2 +1,2 @@
-# opinionated-lens-app
+# VimCord-app
  Lens-web3

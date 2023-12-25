@@ -2,7 +2,7 @@
 import { useTheme } from "next-themes";
 import {Button} from '@nextui-org/react'
 
-export default function page() {
+export default function ThemeButton() {
   const { setTheme, theme } = useTheme();
 
   return (

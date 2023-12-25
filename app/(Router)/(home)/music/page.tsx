@@ -9,15 +9,13 @@ import {
   LimitType
 } from '@lens-protocol/react-web'
 
-import {
-  Loader2,
-  MessageSquare, Repeat2, Heart, Grab,
-} from "lucide-react"
+
 
 import ReactMarkdown from 'react-markdown'
 import { Avatar } from '@nextui-org/react'
-import { RiChat1Line, RiHeart3Line, RiRepeat2Line, RiRepeatFill, RiShieldCheckLine } from 'react-icons/ri'
+
 import InteractCard from '@/app/components/postslist/InteractCard'
+import { RiLoader4Line } from 'react-icons/ri'
 enum PublicationMetadataMainFocusType {
   Article = "ARTICLE",
   Audio = "AUDIO",
@@ -80,7 +78,7 @@ export default function page() {
 
         {loadingMusicPubs && (
           <div className=" flex flex-1 justify-center items-center ">
-            <Loader2 className="h-12 w-12 animate-spin" />
+            <RiLoader4Line className="h-12 w-12 animate-spin" />
           </div>
         )}
 

@@ -1,8 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import './home.css'
-import { ListMusic, Newspaper, PersonStanding, Shapes, } from "lucide-react"
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { RiFileTextLine, RiImageLine, RiMusic2Line, RiShapesLine, RiVideoLine } from 'react-icons/ri'
@@ -43,10 +42,10 @@ export default function Home({ children }) {
 
 
       <div className="flex flex-row sm:flex-row border h-16 sm:w-screen   items-center sm:fixed sm:top-0 sm:backdrop-blur-2xl max-w-4xl mx-auto w-[100%]">
-        {linknav.map((item, index) => (
-          <div className='mx-auto justify-around w-[20%] flex hover:bg-[#6463631a]'>
+        {linknav.map((item) => (
+          <div className='mx-auto justify-around w-[20%] flex hover:bg-[#6463631a]' key={item.href}>
 
-          <Link key={index} href={item.href} className={`home_nav flex items-center justify-center w-[100%] h-[64px] sm:flex-col sm:justify-around ${pathname === item.href ? 'active' : ''}`}>
+          <Link  href={item.href} className={`home_nav flex items-center justify-center w-[100%] h-[64px] sm:flex-col sm:justify-around ${pathname === item.href ? 'active' : ''}`}>
               <div className=' justify-center color-[#545353d3] text-2xl sm:text-xl'> {item.logo} </div>
               <p className="text-sm ml-2 sm:ml-0 ">{item.name}</p>
           </Link>

@@ -46,6 +46,7 @@ function Profile({ address }) {
                 <img
                   src={profile?.metadata?.picture?.optimized?.uri}
                   className='rounded w-[200px]'
+                  alt="user profile picture"
                 />
               )}
             </div>

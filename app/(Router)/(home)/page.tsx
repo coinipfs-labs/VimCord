@@ -9,10 +9,8 @@ import {
   LimitType
 } from '@lens-protocol/react-web'
 import InteractCard from '@/components/postslist/InteractCard';
-import { Avatar } from "@nextui-org/react";
-import ReactMarkdown from 'react-markdown'
-import Link from 'next/link';
-import { RiChat1Line, RiHeart3Line, RiLoader4Line, RiRepeat2Line, RiShieldCheckLine } from "react-icons/ri";
+
+import { RiLoader4Line} from "react-icons/ri";
 import Posimg from '@/app/components/postslist/Posimg';
 import Avatarimg from '@/app/components/postslist/Avatarimg';
 import AvatarName from '@/app/components/postslist/AvatarName';
@@ -88,10 +86,10 @@ export default function page() {
 
 
         {publications?.map((publication: any) => (
-          <div className="border-b border-l border-r  sm:border-r-0 sm:border-l-0 hover:bg-[#6463631a]" >
+          <div key={publication.id} className="border-b border-l border-r  sm:border-r-0 sm:border-l-0 hover:bg-[#6463631a]" >
 
 
-            <div className=" p-6 sm:p-2  sm:w-screen" key={publication.id} >
+            <div className=" p-6 sm:p-2  sm:w-screen"  >
 
               {/* users  */}
               <div className="space-y-3 flex">

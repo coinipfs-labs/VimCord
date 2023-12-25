@@ -20,7 +20,7 @@ export default function ProfileA({ params: { users } }) {
       <div className="flex items-center space-x-4">
         {profile?.metadata?.picture?.__typename === 'ImageSet' && (
           <img
-            alt={profile.handle?.fullHandle}
+            alt='posts data'
             className="rounded-xl w-[100px] h-[100px]"
             src={profile.metadata.picture.optimized?.uri}
           />
@@ -74,7 +74,7 @@ function Publications({
             <img
               width="400"
               height="400"
-              alt={profile.handle?.fullHandle}
+              alt="user posts img"
               className='rounded-xl mt-6 mb-2'
               src={pub.metadata?.asset?.image?.optimized?.uri}
             />

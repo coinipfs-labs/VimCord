@@ -7,13 +7,13 @@ export default function Provider({ children }) {
     return (
         <>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-               
+            <Web3Modal>
                     <LensProvider>
                         <NextUI>
-                        <Web3Modal>{children}</Web3Modal>
+                       {children}
                         </NextUI>
                     </LensProvider>
-                
+                    </Web3Modal>
             </ThemeProvider >
         </>
     )
