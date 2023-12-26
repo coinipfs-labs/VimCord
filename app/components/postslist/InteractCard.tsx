@@ -1,11 +1,14 @@
+'use client'
+import { useRouter } from "next/navigation";
 import { RiChat1Line, RiHeart3Line, RiRepeat2Line, RiShieldCheckLine } from "react-icons/ri";
 
 export default function interactCard({dataname}) {
+  const router = useRouter();
   return (
     <div>
         {/* interactCard */}
         <div className='max-w-[50%] sm:max-w-[100vw] justify-around flex items-center '>
-                <button className="rounded-full caret-stone-300" onClick={() => window.open(`/${dataname.by.handle.localName}.lens/posts/${dataname.id}`)} >
+                <button className="rounded-full caret-stone-300" onClick={() => router.push(`/${dataname.by.handle.localName}.lens/posts/${dataname.id}`)} >
                   <RiChat1Line className="size-5 " />
                   {dataname.stats.comments}
                 </button>

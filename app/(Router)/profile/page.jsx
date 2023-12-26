@@ -15,26 +15,25 @@ export default function ProfileWrapper() {
 
   if (isConnecting) return <div> 正在连接… </div>;
   if (isDisconnected) return <div>已断开连接</div>;
-  if (!address) {return <>未连接</>;}
+  if (!address) {
+    return <>未连接</>;
+  }
 
   return (
-    <>
+    <div className=''>
       {/* <Profile address={address} /> */}
-      如果已连接没有显示账户，说明您暂未加入镜头协议
-      <div>账户地址:{address}</div>
-
+      如果已连接没有显示账户信息，说明您暂未加入镜头协议
       <div>
-          <Button
-            disabled={isLoading}
-            onClick={() => signMessage()}
-            color='primary'>
-            签名同意登入
-          </Button>
-          {isSuccess && <div>Signature: {data}</div>}
-          {isError && <div>签名消息出错</div>}
-        </div>
-
-    </>
+        <Button
+          disabled={isLoading}
+          onClick={() => signMessage()}
+          color='primary'>
+          签名同意登入
+        </Button>
+        {isSuccess && <p>签名数据： {data}</p>}
+        {isError && <p>签名消息出错</p>}
+      </div>
+    </div>
   );
 }
 

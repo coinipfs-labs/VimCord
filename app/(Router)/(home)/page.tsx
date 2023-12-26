@@ -15,6 +15,7 @@ import Posimg from '@/app/components/postslist/Posimg';
 import Avatarimg from '@/app/components/postslist/Avatarimg';
 import AvatarName from '@/app/components/postslist/AvatarName';
 import PosText from '@/app/components/postslist/PosText';
+import { useRouter } from 'next/navigation';
 
 
 enum PublicationMetadataMainFocusType {
@@ -37,7 +38,7 @@ enum PublicationMetadataMainFocusType {
 }
 
 export default function Page() {
-
+  const router = useRouter()
   let { data: profiles, error: profileError, loading: loadingProfiles } = useExploreProfiles({
     limit: LimitType.TwentyFive,
     orderBy: ExploreProfilesOrderByType.MostFollowers
@@ -102,7 +103,7 @@ export default function Page() {
 
               {/* users posts data  */}
               <div className=''
-                onClick={() => window.open(`/${publication.by.handle.localName}.lens/posts/${publication.id}`)}>
+                onClick={() => router.push(`/${publication.by.handle.localName}.lens/posts/${publication.id}`)}>
 
                 <PosText content={publication.metadata.content} />
 

@@ -12,6 +12,7 @@ import {
 
 import { Avatar } from '@nextui-org/react'
 import { RiLoader4Line } from 'react-icons/ri'
+import { useRouter } from 'next/navigation'
 
 
 
@@ -41,20 +42,18 @@ export default function Page() {
     }
     return true
   })
-
+  const router = useRouter()
   return (
     <>
       <div className="flex sm:p-0 max-w-[1536px] mx-auto">
 
-        <div className='border-t border-b  border-r border-l sm:border-l-0 sm:border-r-0 flex  flex-wrap sm:flex-col'>
+        <div className='w-[100vw]  flex  flex-wrap sm:flex-col'>
           {
             profiles?.map(profile => (
-              <a
+              <div
                 key={profile.id}
-                className=" p-4 cursor-pointer  border-t border-b min-w-[20%] md:min-w-[25%] lg:min-w-[25%] sm:min-w-[100vw]"
-                rel="no-opener"
-                target="_blank"
-                href={`/${profile.handle.localName}.lens`}>
+                className=" p-4 cursor-pointer min-w-[25%] md:min-w-[50%] lg:min-w-[50%] sm:min-w-[100vw]"
+                onClick={() => router.push(`/${profile.handle.localName}.lens`)}>
                 <div className="space-y-3">
                   <div className="overflow-hidden rounded-md flex-1 flex-grow">
                     <Avatar
@@ -66,7 +65,7 @@ export default function Page() {
                     <p className="text-xs text-muted-foreground">{profile.metadata?.displayName}</p>
                   </div>
                 </div>
-              </a>
+              </div>
             ))
           }
         </div>

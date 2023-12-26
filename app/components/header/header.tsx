@@ -196,8 +196,8 @@ function Profile() {
             <NavbarContent justify="center"> </NavbarContent>
 
             <NavbarContent justify='end'>
-                {/* <w3m-connect-button size='sm' label='Connect'/> */} <w3m-network-button />
-                <w3m-button balance={'hide'} label='Connect' size='md' />
+               {/*  <w3m-network-button /> */}
+                <w3m-button balance={'hide'} label='Connect' size='sm' />
             </NavbarContent>
         </>
     )

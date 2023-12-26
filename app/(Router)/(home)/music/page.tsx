@@ -16,6 +16,7 @@ import { Avatar } from '@nextui-org/react'
 
 import InteractCard from '@/app/components/postslist/InteractCard'
 import { RiLoader4Line } from 'react-icons/ri'
+import { useRouter } from 'next/navigation'
 enum PublicationMetadataMainFocusType {
   Article = "ARTICLE",
   Audio = "AUDIO",
@@ -35,7 +36,7 @@ enum PublicationMetadataMainFocusType {
   Video = "VIDEO"
 }
 export default function Page() {
-
+  const router = useRouter()
   let { data: profiles, error: profileError, loading: loadingProfiles } = useExploreProfiles({
     limit: LimitType.TwentyFive,
     orderBy: ExploreProfilesOrderByType.MostFollowers
@@ -87,7 +88,7 @@ export default function Page() {
           <div
             className="border-b border-l border-r sm:border-r-0 sm:border-l-0 hover:bg-[#6463631a]"
             key={publication.id}
-            onClick={() => window.open(`https://share.lens.xyz/p/${publication.id}`, '_blank')}
+            onClick={() => router.push(`https://share.lens.xyz/p/${publication.id}`)}
           >
             <div className="space-y-3 mb-4 p-4">
 
