@@ -44,7 +44,7 @@ export default function Navbar() {
           activeIcon={<RiMessage2Fill className="Navicon" />}
         />
 
-        {address ? (
+ {/*        {address ? ( */}
           <NavLink
             href={`/profile`}
             activeHrefs={[`/profile`]}
@@ -52,7 +52,7 @@ export default function Navbar() {
             activeIcon={<RiUserFill className="Navicon" />}
           />
 
-        ) : (
+{/*         ) : (
 
           <NavLink
             href={`/profile/sin`}
@@ -61,7 +61,7 @@ export default function Navbar() {
             activeIcon={<RiUserFill className="Navicon" />}
           />
         )}
-
+ */}
 
 
       </div>

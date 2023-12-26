@@ -41,19 +41,19 @@ export default function Home({ children }) {
     <div className="mx-auto max-w-[1536px] justify-center pb-12  flex  flex-col">
 
 
-      <div className="flex flex-row sm:flex-row border h-16 sm:w-screen   items-center sm:fixed sm:top-0 sm:backdrop-blur-2xl max-w-4xl mx-auto w-[100%]">
+      <div className="flex flex-row sm:flex-row border border-t-0 sm:border-r-0 sm:border-l-0 z-50 sm:bg-[--background-nav] sm:w-screen  h-14 items-center sm:fixed sm:top-0  max-w-4xl mx-auto w-[100vw]">
         {linknav.map((item) => (
-          <div className='mx-auto justify-around w-[20%] flex hover:bg-[#6463631a]' key={item.href}>
+          <div className='mx-auto justify-around w-[20%] flex hover:bg-[--link-hover-background]' key={item.href}>
 
-          <Link  href={item.href} className={`home_nav flex items-center justify-center w-[100%] h-[64px] sm:flex-col sm:justify-around ${pathname === item.href ? 'active' : ''}`}>
-              <div className=' justify-center color-[#545353d3] text-2xl sm:text-xl'> {item.logo} </div>
-              <p className="text-sm ml-2 sm:ml-0 ">{item.name}</p>
+          <Link  href={item.href} className={`home_nav flex items-center justify-center w-[100%] h-[56px] sm:flex-col sm:justify-around text-[#878787]  ${pathname === item.href ? 'active' : ''}`}>
+              <div className=' justify-center text-2xl sm:text-xl'> {item.logo} </div>
+              <p className="text-sm ml-2 sm:ml-0 text-inherit">{item.name}</p>
           </Link>
           </div>
         ))}
       </div>
 
-      <div className=' flex  sm:justify-normal sm:pt-[64px]'>
+      <div className=' flex  sm:justify-normal sm:mt-[56px]'>
 
         {children}
 

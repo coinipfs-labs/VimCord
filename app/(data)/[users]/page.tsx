@@ -20,7 +20,7 @@ export default function ProfileA({ params: { users } }) {
     <div className='max-w-4xl mx-auto'>
       <div className="flex items-center space-x-4">
         {profile?.metadata?.picture?.__typename === 'ImageSet' && (
-          <img 
+          <img
             alt='posts data'
             width={100}
             height={100}
@@ -29,10 +29,10 @@ export default function ProfileA({ params: { users } }) {
           />
         )}
         <div>
-          <p className="text-xl mb-4">{profile?.metadata?.bio}</p>
-          <p className="text-xs caret-slate-500 my-3">
-            @{profile?.handle?.localName}.{profile?.handle?.namespace}
+          <p>name</p>
+          <p className="text-xs caret-slate-500">{profile?.handle?.localName}.{profile?.handle?.namespace}
           </p>
+          <p className="text-xl ">{profile?.metadata?.bio}</p>
         </div>
       </div>
       {profile && <Publications profile={profile} />}
@@ -74,8 +74,8 @@ function Publications({
             </ReactMarkdown>
           </div>
           {pub.metadata?.asset?.image?.optimized?.uri && (
-            <img 
-             
+            <img
+
               alt="user posts img"
               className='rounded-xl mt-6 mb-2'
               src={pub.metadata?.asset?.image?.optimized?.uri}

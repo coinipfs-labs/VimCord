@@ -75,7 +75,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="flex flex-1 flex-wrap flex-col max-w-4xl mx-auto border-t">
+      <div className="flex flex-1 flex-wrap flex-col max-w-4xl mx-auto  w-[100vw] border-t">
         {
           loadingPubs && (
             <div className=" flex flex-1 justify-center items-center ">
@@ -86,13 +86,13 @@ export default function Page() {
 
 
         {publications?.map((publication: any) => (
-          <div key={publication.id} className="border-b border-l border-r  sm:border-r-0 sm:border-l-0 hover:bg-[#6463631a]" >
+          <div key={publication.id} className="border border-t-0  sm:border-r-0 sm:border-l-0 hover:bg-[--link-hover-background] max-w-4xl mx-auto  w-[100vw] p-6" >
 
 
-            <div className=" p-6 sm:p-2  sm:w-screen"  >
+           
 
               {/* users  */}
-              <div className="space-y-3 flex">
+              <div className=" flex">
                 <div className="flex" >
                   <Avatarimg dataname={publication} />
                   <AvatarName dataname={publication} />
@@ -101,13 +101,11 @@ export default function Page() {
 
 
               {/* users posts data  */}
-              <div className='max-w-full justify-start sm:max-w-[100%]'
+              <div className=''
                 onClick={() => window.open(`/${publication.by.handle.localName}.lens/posts/${publication.id}`)}>
 
-                {/* text */}
                 <PosText content={publication.metadata.content} />
 
-                {/* img */}
                 <Posimg src={publication.__typename === 'Post' ? publication.metadata?.asset?.image?.optimized.uri : ''} />
               </div>
 
@@ -117,7 +115,7 @@ export default function Page() {
               <InteractCard dataname={publication} />
 
 
-            </div>
+           
           </div>
         ))}
       </div>

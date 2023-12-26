@@ -17,7 +17,7 @@ const PosText = ({ content }) => {
 
   return (
     <div className=''>
-      <ReactMarkdown className="mt-4 break-words h-auto max-w-[90%]">
+      <ReactMarkdown className="mt-4 break-words h-auto text-wrap">
         {displayedLines.join('\n')}
       </ReactMarkdown>
       {lines.length > MAX_LINES && (

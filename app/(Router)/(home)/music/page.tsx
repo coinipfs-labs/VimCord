@@ -104,7 +104,7 @@ export default function Page() {
 
 
               <div>
-                <img 
+                <img
                   className={`max-w-[400px] h-auto sm:max-w-[100%]   sm:h-auto mb-3  sm:rounded-none  rounded-2xl object-cover`}
                   alt='audio img'
                   src={publication.__typename === 'Post' ?

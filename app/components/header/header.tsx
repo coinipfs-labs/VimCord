@@ -27,17 +27,16 @@ export default function Header() {
         <>
             <Navbar
                 isBordered={false}
+                isBlurred={false}
                 isMenuOpen={isMenuOpen}
                 onMenuOpenChange={setIsMenuOpen}
-                maxWidth={"2xl"} 
-                className="sm:hidden flex">
+                maxWidth={"2xl"}
+                height='56px'
+                className="sm:hidden flex Navbar_border">
                 {/* 左 */}
-                <NavbarContent>
+                <NavbarContent justify="start">
                     {/* 手机 */}
-                    <NavbarContent className='md:flex hidden'>
-                        <GoSearch size={18} />
-                    </NavbarContent>
-                    <NavbarBrand className='md:hidden flex'>
+                    <NavbarBrand className='sm:hidden flex'>
                         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                             <Image
                                 src='/favicon.ico'
@@ -48,52 +47,49 @@ export default function Header() {
                             />
                         </motion.div>
                     </NavbarBrand>
-                    {/* 中 */}
-                    <NavbarContent className='sm:hidden flex gap-4 md:gap-1' justify="center">
-                        <NavbarItem>
-                            <Link
-                                href='/'
-                                className={`header_link ${pathname === "/" ? "active" : ""
-                                    }`}>
-                                Home
-                            </Link>
-                        </NavbarItem>
-
-                        <NavbarItem>
-                            <Link
-                                href='/find'
-                                className={`header_link ${pathname && pathname.startsWith("/find") ? "active" : ""
-                                    }`}>
-                                Find
-                            </Link>
-                        </NavbarItem>
-
-                        <NavbarItem>
-                            <Link
-                                href='/message'
-                                className={`header_link ${pathname && pathname.startsWith("/message") ? "active" : ""
-                                    }`}>
-                                Message
-                            </Link>
-                        </NavbarItem>
-
-                        <NavbarItem>
-                            <Link
-                                href='/profile'
-                                className={`header_link ${pathname && pathname.startsWith("/profile") ? "active" : ""
-                                    }`}>
-                                Profile
-                            </Link>
-                        </NavbarItem>
-                    </NavbarContent>
                 </NavbarContent>
 
+                {/* 中 */}
+                <NavbarContent className='sm:hidden flex gap-4 md:gap-2' justify="center">
+                    <NavbarItem>
+                        <Link
+                            href='/'
+                            className={`header_link ${pathname === "/" ? "active" : ""
+                                }`}>
+                            Home
+                        </Link>
+                    </NavbarItem>
 
+                    <NavbarItem>
+                        <Link
+                            href='/find'
+                            className={`header_link ${pathname && pathname.startsWith("/find") ? "active" : ""
+                                }`}>
+                            Find
+                        </Link>
+                    </NavbarItem>
+
+                    <NavbarItem>
+                        <Link
+                            href='/message'
+                            className={`header_link ${pathname && pathname.startsWith("/message") ? "active" : ""
+                                }`}>
+                            Message
+                        </Link>
+                    </NavbarItem>
+
+                    <NavbarItem>
+                        <Link
+                            href='/profile'
+                            className={`header_link ${pathname && pathname.startsWith("/profile") ? "active" : ""
+                                }`}>
+                            Profile
+                        </Link>
+                    </NavbarItem>
+                </NavbarContent>
 
                 {/* 右 */}
                 <NavbarContent justify='end'>
-
-
                     <NavbarContent className='md:hidden flex gap-4' justify='end'>
                         <Input
                             classNames={{
@@ -111,16 +107,98 @@ export default function Header() {
                     </NavbarContent>
 
                     <w3m-button balance={'hide'} label='Connect' />
-
                 </NavbarContent>
-
-                {/*                 <NavbarContent className='sm:hidden' justify='end'>
-                    <w3m-button balance={'hide'} label='Connect' />
-                </NavbarContent> */}
-
-
-
             </Navbar>
+
+
+
+
+
+            {["/find", "/message", "/profile"].includes(pathname) ? (
+                <Navbar
+                    isBordered={false}
+                    isBlurred={false}
+                    isMenuOpen={isMenuOpen}
+                    onMenuOpenChange={setIsMenuOpen}
+                    className="sm:flex hidden Navbar_border"
+                    height="56px"
+                >
+                    <NavbarContent>
+                        {pathname === "/find" && <Find />}
+                        {pathname === "/message" && <Message />}
+                        {pathname && pathname.startsWith("/profile") && null}
+                        {pathname === "/profile" && <Profile />}
+                        {pathname === `/@` && <Users />}
+                    </NavbarContent>
+                </Navbar>
+            ) : null}
+
+
+
+
+        </>)
+}
+function Users() {
+    return (
+        <>
+            <NavbarContent justify="center">Users </NavbarContent>
+        </>
+    )
+}
+function Find() {
+    return (
+        <>
+            <NavbarContent justify="center">Find </NavbarContent>
+        </>
+    )
+}
+
+function Message() {
+
+    return (
+        <>
+            <NavbarBrand>
+                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                    <Image
+                        src='/favicon.ico'
+                        width={40}
+                        height={40}
+                        className='Home_QianCset'
+                        alt='Q'
+                    />
+                </motion.div>
+            </NavbarBrand>
+
+            <NavbarContent justify="center">Message </NavbarContent>
+
+            <NavbarContent justify='end'>
+                <GoSearch size={18} />
+            </NavbarContent>
+        </>
+    );
+}
+
+function Profile() {
+    return (
+        <>
+            <NavbarBrand>
+                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                    <Image
+                        src='/favicon.ico'
+                        width={40}
+                        height={40}
+                        className='Home_QianCset'
+                        alt='Q'
+                    />
+                </motion.div>
+            </NavbarBrand>
+
+            <NavbarContent justify="center"> </NavbarContent>
+
+            <NavbarContent justify='end'>
+                {/* <w3m-connect-button size='sm' label='Connect'/> */} <w3m-network-button />
+                <w3m-button balance={'hide'} label='Connect' size='md' />
+            </NavbarContent>
         </>
     )
 }

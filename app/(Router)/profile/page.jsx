@@ -1,25 +1,40 @@
 "use client";
-import Image from "next/image"
+import Image from "next/image";
 import { Button } from "@nextui-org/react";
-import { getAccount } from "@wagmi/core";
+import { useAccount, useSignMessage } from "wagmi";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { useProfiles } from "@lens-protocol/react-web";
 import { disconnect } from "@wagmi/core";
 export default function ProfileWrapper() {
   const { open } = useWeb3Modal();
 
-  const { address } = getAccount();
-    if (!address) return (<>
-未连接
-  </>);
+  const { address, isConnecting, isDisconnected } = useAccount();
+  const { data, isError, isLoading, isSuccess, signMessage } = useSignMessage({
+    message: "Connect VimCord Dapp",
+  });
+
+  if (isConnecting) return <div> 正在连接… </div>;
+  if (isDisconnected) return <div>已断开连接</div>;
+  if (!address) {return <>未连接</>;}
 
   return (
-    <div>
-      已连接,如果没有显示，说明您暂未加入镜头协议
-  
-      <Profile address={address} />
+    <>
+      {/* <Profile address={address} /> */}
+      如果已连接没有显示账户，说明您暂未加入镜头协议
+      <div>账户地址:{address}</div>
 
-    </div>
+      <div>
+          <Button
+            disabled={isLoading}
+            onClick={() => signMessage()}
+            color='primary'>
+            签名同意登入
+          </Button>
+          {isSuccess && <div>Signature: {data}</div>}
+          {isError && <div>签名消息出错</div>}
+        </div>
+
+    </>
   );
 }
 
@@ -44,10 +59,10 @@ function Profile({ address }) {
           <div className='border rounded-lg p-10'>
             <div>
               {profile.metadata?.picture?.__typename === "ImageSet" && (
-                <img 
+                <img
                   src={profile?.metadata?.picture?.optimized?.uri}
                   className='rounded w-[200px]'
-                  alt="user profile picture"
+                  alt='user profile picture'
                 />
               )}
             </div>

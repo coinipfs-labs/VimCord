@@ -8,17 +8,21 @@
 :root {
   --color: #000;
   --background-nav: #fff;
+    /* UI */
+    --link-hover-background: rgba(0, 0, 0, 0.03) !important;
   /* Navbar */
   --Navbar-background: #fffffff7 !important;
   --nav_link-color: #545353d3 !important;
-
+  --border-015: 1px solid rgba(204, 204, 204, 0.15);
 }
 
 .dark {
   --color: #fff !important;
   --background-nav: #000 !important;
+  	/* UI hover */
+	--link-hover-background: hsla(0,0%,100%,0.04) !important;
   /* Navbar */
   --Navbar-background: #000000 !important;
   --nav_link-color: #ece1e1d3 !important;
-
+  --border-015: 1px solid rgba(204, 204, 204, 0.15);
 }

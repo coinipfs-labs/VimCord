@@ -27,7 +27,7 @@ const config = {
     },
     extend: {
       borderColor: {
-        DEFAULT: 'rgba(204, 204, 204, 0.15)',
+        DEFAULT: 'rgba(204, 204, 204, 0.3)',
       },
       colors:{
         'primary':'#ea7411',
