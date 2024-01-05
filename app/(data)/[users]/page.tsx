@@ -55,7 +55,7 @@ function Publications({
   return (
     <>
       {publications?.map((pub: any, index: number) => (
-        <div key={index} className="border border-b-0   sm:rounded-none hover:bg-[#54535325] pt-6 pb-2 px-6 sm:px-2">
+        <div key={index} className="border border-b-0   sm:rounded-none hover:bg-[--link-hover-background] pt-6 pb-2 px-6 sm:px-2">
           {/* users  */}
           <div className="space-y-3 mb-4">
             <div className="flex" >
