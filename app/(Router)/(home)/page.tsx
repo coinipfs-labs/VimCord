@@ -89,9 +89,6 @@ export default function Page() {
         {publications?.map((publication: any) => (
           <div key={publication.id} className="border border-t-0  sm:border-r-0 sm:border-l-0 hover:bg-[--link-hover-background] max-w-4xl mx-auto  w-[100vw] p-6" >
 
-
-           
-
               {/* users  */}
               <div className=" flex">
                 <div className="flex" >
@@ -100,23 +97,15 @@ export default function Page() {
                 </div>
               </div>
 
-
               {/* users posts data  */}
-              <div className=''
-                onClick={() => router.push(`/${publication.by.handle.localName}.lens/posts/${publication.id}`)}>
-
+              <div onClick={() => router.push(`/${publication.by.handle.localName}.lens/posts/${publication.id}`)}>
                 <PosText content={publication.metadata.content} />
-
                 <Posimg src={publication.__typename === 'Post' ? publication.metadata?.asset?.image?.optimized.uri : ''} />
               </div>
 
-
-
               {/* InteractCard */}
               <InteractCard dataname={publication} />
-
-
-           
+      
           </div>
         ))}
       </div>

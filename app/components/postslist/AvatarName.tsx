@@ -6,9 +6,9 @@ export default function AvatarName({ dataname }) {
         <>
             <div className="sm:ml-3 ml-4">
 
-                <h2 className=" font-medium leading-none " onClick={() => router.push(`/${dataname.by.handle.localName}.lens`)}>{dataname.by.metadata?.displayName}</h2>
+                <b  onClick={() => router.push(`/${dataname.by.handle.localName}.lens`)}>{dataname.by.metadata?.displayName}</b>
 
-                <p className="mb-1  text-[#878787]" onClick={() => router.push(`/${dataname.by.handle.localName}.lens`)}>{dataname.by.handle.localName}.{dataname.by.handle.namespace}</p>
+                <p className=" text-[#878787]" onClick={() => router.push(`/${dataname.by.handle.localName}.lens`)}>{dataname.by.handle.localName}.{dataname.by.handle.namespace}</p>
 
             </div>
 

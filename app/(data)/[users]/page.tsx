@@ -1,4 +1,3 @@
-// app/profile/[handle]/page.tsx
 'use client'
 import InteractCard from '@/app/components/postslist/InteractCard'
 import {
@@ -29,12 +28,12 @@ export default function ProfileA({ params: { users } }) {
           />
         )}
         <div>
-          <p>name</p>
+          <b className=" text-xl">{profile?.metadata?.displayName}</b>
           <p className="text-xs caret-slate-500">{profile?.handle?.localName}.{profile?.handle?.namespace}
           </p>
-          <p className="text-xl ">{profile?.metadata?.bio}</p>
         </div>
       </div>
+      <div><p className="text-base">{profile?.metadata?.bio}</p></div>
       {profile && <Publications profile={profile} />}
     </div>
   )
@@ -54,33 +53,39 @@ function Publications({
   })
   return (
     <>
+
       {publications?.map((pub: any, index: number) => (
         <div key={index} className="border border-b-0   sm:rounded-none hover:bg-[--link-hover-background] pt-6 pb-2 px-6 sm:px-2">
+
           {/* users  */}
-          <div className="space-y-3 mb-4">
+          <div className="flex">
             <div className="flex" >
-              <Avatar src={pub.by?.metadata?.picture?.optimized?.uri} alt={pub.by.handle.localName} onClick={() => window.open(`/${pub.by.handle.localName}.lens`)} />
+              <Avatar src={pub.by?.metadata?.picture?.optimized?.uri} alt={pub.by.handle.localName} />
 
               <div className="sm:ml-3 ml-4">
-                <h3 className="mb-1 font-medium leading-none caret-zinc-400" onClick={() => window.open(`/${pub.by.handle.localName}.lens`)}>{pub.by.handle.localName}.{pub.by.handle.namespace}</h3>
-                <p className="text-xs text-muted-foreground" onClick={() => window.open(`/${pub.by.handle.localName}.lens`)}>{pub.by.metadata?.displayName}</p>
+                <b>{pub.by.metadata?.displayName}</b>
+                <p className="text-[#878787]">
+                  {pub.by.handle.localName}.{pub.by.handle.namespace}
+                </p>
               </div>
             </div>
           </div>
 
-          <div className='max-w-[100%] whitespace-normal overflow-hidden overflow-ellipsis'>
-            <ReactMarkdown className=" mt-4 break-words">
+          {/* users posts data  */}
+          <div className='max-w-[100%] '>
+            <ReactMarkdown className="mt-4 h-auto">
               {pub.metadata.content.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '[LINK]($1)')}
             </ReactMarkdown>
           </div>
           {pub.metadata?.asset?.image?.optimized?.uri && (
             <img
-
               alt="user posts img"
-              className='rounded-xl mt-6 mb-2'
+              className='max-w-[400px] h-auto sm:max-w-[100%] sm:h-auto mt-1 mb-3  sm:rounded-none  rounded-2xl object-cover'
               src={pub.metadata?.asset?.image?.optimized?.uri}
             />
           )}
+
+          {/* InteractCard */}
           <InteractCard dataname={pub} />
 
         </div>

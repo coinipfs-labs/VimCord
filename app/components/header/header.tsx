@@ -32,7 +32,7 @@ export default function Header() {
                 onMenuOpenChange={setIsMenuOpen}
                 maxWidth={"2xl"}
                 height='56px'
-                className="sm:hidden flex Navbar_border">
+                className="sm:hidden flex Navbar_border z-50">
                 {/* 左 */}
                 <NavbarContent justify="start">
                     {/* 手机 */}
@@ -99,7 +99,7 @@ export default function Header() {
                                 inputWrapper:
                                     "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
                             }}
-                            placeholder='搜索'
+                            placeholder='Search'
                             size='sm'
                             startContent={<GoSearch size={18} />}
                             type='search'
@@ -141,14 +141,23 @@ export default function Header() {
 function Users() {
     return (
         <>
+            <NavbarContent justify="start"> </NavbarContent>
             <NavbarContent justify="center">Users </NavbarContent>
+            <NavbarContent justify="end"> </NavbarContent>
         </>
     )
 }
+
 function Find() {
     return (
         <>
+            <NavbarContent justify="start"> </NavbarContent>
             <NavbarContent justify="center">Find </NavbarContent>
+            <NavbarContent justify="end">
+                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                    <GoSearch size={18} />
+                </motion.div>
+            </NavbarContent>
         </>
     )
 }
@@ -157,23 +166,9 @@ function Message() {
 
     return (
         <>
-            <NavbarBrand>
-                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                    <Image
-                        src='/favicon.ico'
-                        width={40}
-                        height={40}
-                        className='Home_QianCset'
-                        alt='Q'
-                    />
-                </motion.div>
-            </NavbarBrand>
-
+            <NavbarContent justify="start"> </NavbarContent>
             <NavbarContent justify="center">Message </NavbarContent>
-
-            <NavbarContent justify='end'>
-                <GoSearch size={18} />
-            </NavbarContent>
+            <NavbarContent justify='end'></NavbarContent>
         </>
     );
 }
@@ -196,7 +191,7 @@ function Profile() {
             <NavbarContent justify="center"> </NavbarContent>
 
             <NavbarContent justify='end'>
-               {/*  <w3m-network-button /> */}
+                {/*  <w3m-network-button /> */}
                 <w3m-button balance={'hide'} label='Connect' size='sm' />
             </NavbarContent>
         </>
