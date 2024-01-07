@@ -100,7 +100,7 @@ export default function Page() {
               {/* users posts data  */}
               <div onClick={() => router.push(`/${publication.by.handle.localName}.lens/posts/${publication.id}`)}>
                 <PosText content={publication.metadata.content} />
-                <Posimg src={publication.__typename === 'Post' ? publication.metadata?.asset?.image?.optimized.uri : ''} />
+{/*                 <Posimg src={publication.__typename === 'Post' ? publication.metadata?.asset?.image?.optimized.uri : ''} /> */}
               </div>
 
               {/* InteractCard */}
