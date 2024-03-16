@@ -23,7 +23,7 @@
         "./*"
       ],
       "@/config/*": [
-        "./app/config/*"
+        "./config/*"
       ],
       "@/components/*": [
         "./app/components/*"

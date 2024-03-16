@@ -14,13 +14,12 @@ import { RiApps2Fill, RiApps2Line, RiHome5Fill, RiHome5Line, RiMessage2Fill, RiM
 
 
 export default function Navbar() {
-  const { address } = getAccount();
-  const pathname = usePathname();
+
 
   return (
     <>
 
-      <div className='Navbar'>
+      <div className='Navbar1'>
 
 
         <NavLink

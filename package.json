@@ -9,12 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@lens-protocol/metadata": "^1.0.5",
-    "@lens-protocol/react-web": "^2.0.0-alpha.19",
-    "@lens-protocol/wagmi": "^3.0.0-alpha.22",
+    "@lens-protocol/react-web": "^2.0.0-alpha.34",
+    "@lens-protocol/wagmi": "^4.0.0-alpha.3",
     "@nextui-org/react": "^2.2.9",
-    "@walletconnect/modal": "^2.6.2",
-    "@web3modal/wagmi": "^3.5.2",
+    "@web3modal/wagmi": "^4.0.11",
     "ethers": "^5.7.2",
     "framer-motion": "^10.16.16",
     "next": "^14.0.4",
@@ -23,8 +21,8 @@
     "react-dom": "^18",
     "react-icons": "^4.12.0",
     "react-markdown": "^8.0.7",
-    "viem": "^1.20.3",
-    "wagmi": "^1.4.12"
+    "viem": "^2.7.16",
+    "wagmi": "^2.5.7"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -87,7 +87,7 @@ export default function Page() {
 
 
         {publications?.map((publication: any) => (
-          <div key={publication.id} className="border border-t-0  sm:border-r-0 sm:border-l-0 hover:bg-[--link-hover-background] max-w-4xl mx-auto  w-[100vw] p-6" >
+          <div key={publication.id} className="border border-t-0  sm:border-r-0 sm:border-l-0 hover:bg-[--link-hover-background] max-w-4xl mx-auto  w-[100vw] p-6 sm:p-2" >
 
               {/* users  */}
               <div className=" flex">
@@ -100,7 +100,7 @@ export default function Page() {
               {/* users posts data  */}
               <div onClick={() => router.push(`/${publication.by.handle.localName}.lens/posts/${publication.id}`)}>
                 <PosText content={publication.metadata.content} />
-{/*                 <Posimg src={publication.__typename === 'Post' ? publication.metadata?.asset?.image?.optimized.uri : ''} /> */}
+                <Posimg src={publication.__typename === 'Post' ? publication.metadata?.asset?.image?.optimized.uri : ''} />
               </div>
 
               {/* InteractCard */}

@@ -55,7 +55,7 @@ function Publications({
     <>
 
       {publications?.map((pub: any, index: number) => (
-        <div key={index} className="border border-b-0   sm:rounded-none hover:bg-[--link-hover-background] pt-6 pb-2 px-6 sm:px-2">
+        <div key={index} className="border border-b-0   sm:rounded-none hover:bg-[--link-hover-background] p-6 sm:px-2">
 
           {/* users  */}
           <div className="flex">
@@ -73,14 +73,14 @@ function Publications({
 
           {/* users posts data  */}
           <div className='max-w-[100%] '>
-            <ReactMarkdown className="mt-4 h-auto">
+            <ReactMarkdown className=" h-auto">
               {pub.metadata.content.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '[LINK]($1)')}
             </ReactMarkdown>
           </div>
           {pub.metadata?.asset?.image?.optimized?.uri && (
             <img
               alt="user posts img"
-              className='max-w-[400px] h-auto sm:max-w-[100%] sm:h-auto mt-1 mb-3  sm:rounded-none  rounded-2xl object-cover'
+              className='max-w-[400px] h-auto sm:max-w-[100%] sm:h-auto sm:rounded-none  rounded-2xl object-cover'
               src={pub.metadata?.asset?.image?.optimized?.uri}
             />
           )}

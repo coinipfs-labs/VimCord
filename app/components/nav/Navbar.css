@@ -1,5 +1,5 @@
 @media screen and (min-width:641px) {
-  .Navbar {
+  .Navbar1 {
     display: none;
   }
 
@@ -8,7 +8,7 @@
 
 @media only screen and (max-width: 640px) {
 
-  .Navbar {
+  .Navbar1 {
     width: 100vw;
     height: 56px;
 
@@ -23,7 +23,7 @@
     border-top: 1px solid rgba(204, 204, 204, 0.3);
   }
 
-  .Navbar.hidden {
+  .Navbar1.hidden {
     display: none;
   }
 
