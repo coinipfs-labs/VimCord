@@ -1,12 +1,13 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Header from '@/components/header/header'
-import Provider from '@/config/Provider'
+import Provider from '@/app/Provider'
 
 import { headers } from 'next/headers'
 import { cookieToInitialState } from 'wagmi'
 import { config } from '@/config/WagmiProvider'
-import { ContextProvider } from '@/context/Web3ModalProvider'
+import { ContextProvider } from '@/app/context/Web3ModalProvider'
+import { LensProvider } from '@/config/lens-provider'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -35,14 +36,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body className={`${inter.className} overflow-y-scroll`}>
 
 
-        <ContextProvider initialState={initialState}>
-          <Provider>
-            <Header />
-            <div className='max-w-[1536px] mx-auto'>
-              {children}
-            </div>
-          </Provider>
-        </ContextProvider>
+        <Provider>
+          <ContextProvider initialState={initialState}>
+            <LensProvider>
+
+              <Header />
+              <div className='max-w-[1536px] mx-auto'>
+                {children}
+              </div>
+            </LensProvider>
+          </ContextProvider>
+        </Provider>
 
 
       </body>
