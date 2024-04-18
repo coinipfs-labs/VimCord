@@ -11,7 +11,6 @@
   "dependencies": {
     "@lens-protocol/react-web": "^2.0.0-alpha.34",
     "@lens-protocol/wagmi": "^4.0.0-alpha.3",
-"@lens-protocol/metadata": "^1.1.6",
     "@nextui-org/react": "^2.2.9",
     "@web3modal/wagmi": "^4.0.11",
     "ethers": "^5.7.2",
