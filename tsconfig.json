@@ -19,18 +19,7 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "@/config/*": [
-        "./app/config/*"
-      ],
-      "@/context/*": [
-        "./app/context/*"
-      ],
-      "@/components/*": [
-        "./app/components/*"
-      ]
+      "@/*": ["./*"]
     },
     "lib": [
       "dom",

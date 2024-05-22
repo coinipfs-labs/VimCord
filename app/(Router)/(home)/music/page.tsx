@@ -14,7 +14,7 @@ import Image from "next/image"
 import ReactMarkdown from 'react-markdown'
 import { Avatar } from '@nextui-org/react'
 
-import InteractCard from '@/app/components/postslist/InteractCard'
+import InteractCard from '@/components/postslist/InteractCard'
 import { RiLoader4Line } from 'react-icons/ri'
 import { useRouter } from 'next/navigation'
 enum PublicationMetadataMainFocusType {

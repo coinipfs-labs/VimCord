@@ -1,5 +1,5 @@
 'use client'
-import InteractCard from '@/app/components/postslist/InteractCard'
+import InteractCard from '@/components/postslist/InteractCard'
 import {
   useProfile, usePublications, Profile, LimitType, PublicationType
 } from '@lens-protocol/react-web'

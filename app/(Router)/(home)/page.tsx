@@ -10,11 +10,11 @@ import {
 } from '@lens-protocol/react-web'
 import InteractCard from '@/components/postslist/InteractCard';
 
-import { RiLoader4Line} from "react-icons/ri";
-import Posimg from '@/app/components/postslist/Posimg';
-import Avatarimg from '@/app/components/postslist/Avatarimg';
-import AvatarName from '@/app/components/postslist/AvatarName';
-import PosText from '@/app/components/postslist/PosText';
+import { RiLoader4Line } from "react-icons/ri";
+import Posimg from '@/components/postslist/Posimg';
+import Avatarimg from '@/components/postslist/Avatarimg';
+import AvatarName from '@/components/postslist/AvatarName';
+import PosText from '@/components/postslist/PosText';
 import { useRouter } from 'next/navigation';
 
 
@@ -89,23 +89,25 @@ export default function Page() {
         {publications?.map((publication: any) => (
           <div key={publication.id} className="border border-t-0  sm:border-r-0 sm:border-l-0 hover:bg-[--link-hover-background] max-w-4xl mx-auto  w-[100vw] p-6 sm:p-2" >
 
-              {/* users  */}
-              <div className=" flex">
-                <div className="flex" >
-                  <Avatarimg dataname={publication} />
-                  <AvatarName dataname={publication} />
-                </div>
+            {/* users  */}
+            <div className=" flex">
+              <div className="flex" >
+                <Avatarimg dataname={publication} />
+                <AvatarName dataname={publication} />
               </div>
+            </div>
 
-              {/* users posts data  */}
-              <div onClick={() => router.push(`/${publication.by.handle.localName}.lens/posts/${publication.id}`)}>
-                <PosText content={publication.metadata.content} />
-                <Posimg src={publication.__typename === 'Post' ? publication.metadata?.asset?.image?.optimized.uri : ''} />
-              </div>
+            {/* users posts data  */}
+            <div onClick={() => router.push(`/${publication.by.handle.localName}.lens/posts/${publication.id}`)}>
+              <PosText content={publication.metadata.content} />
 
-              {/* InteractCard */}
-              <InteractCard dataname={publication} />
-      
+
+              {/* <Posimg src={publication.__typename === 'Post' ? publication.metadata?.asset?.image?.optimized.uri : ''} /> */}
+            </div>
+
+            {/* InteractCard */}
+            <InteractCard dataname={publication} />
+
           </div>
         ))}
       </div>

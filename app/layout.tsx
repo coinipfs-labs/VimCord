@@ -5,9 +5,9 @@ import Provider from '@/app/Provider'
 
 import { headers } from 'next/headers'
 import { cookieToInitialState } from 'wagmi'
-import { config } from '@/config/WagmiProvider'
-import { ContextProvider } from '@/app/context/Web3ModalProvider'
-import { LensProvider } from '@/config/lens-provider'
+import { config } from '@/config/Wagmi'
+import { Web3ModalProvider } from '@/config/Web3Modal'
+import { Lens } from '@/config/Lens'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -37,15 +37,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
 
         <Provider>
-          <ContextProvider initialState={initialState}>
-            <LensProvider>
+          <Web3ModalProvider initialState={initialState}>
+            <Lens>
 
               <Header />
               <div className='max-w-[1536px] mx-auto'>
                 {children}
               </div>
-            </LensProvider>
-          </ContextProvider>
+            </Lens>
+          </Web3ModalProvider>
         </Provider>
 
 

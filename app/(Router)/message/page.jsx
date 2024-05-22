@@ -1,9 +1,8 @@
-import ThemeButton from '@/components/ThemeButton'
 export default function Message() {
   return (
     <>
     message
-    <ThemeButton />
+   集成社区和通知、聊天模块
     </>
   )
 }

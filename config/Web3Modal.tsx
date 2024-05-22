@@ -1,7 +1,7 @@
 'use client'
 
 import React, { ReactNode } from 'react'
-import { config, projectId } from '@/config/WagmiProvider'
+import { config, projectId } from '@/config/Wagmi'
 
 import { createWeb3Modal, useWeb3ModalTheme } from '@web3modal/wagmi/react'
 
@@ -9,17 +9,17 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import { State, WagmiProvider } from 'wagmi'
 import { useTheme } from 'next-themes'
-import { polygon } from 'wagmi/chains'
+
 
 // Setup queryClient
 const queryClient = new QueryClient()
 
 if (!projectId) throw new Error('Project ID is not defined')
 createWeb3Modal({
-  defaultChain: polygon,
   wagmiConfig: config,
   projectId,
-  //enableAnalytics: true,
+  enableAnalytics: true,
+  enableOnramp: true,
   featuredWalletIds: [
     'c57ca95b47569778a828d19178114f4db188b89b763c899ba0be274e97267d96',
     '971e689d0a5be527bac79629b4ee9b925e82208e5168b733496a09c0faed0709',
@@ -39,7 +39,7 @@ createWeb3Modal({
 })
 
 
-export function ContextProvider({
+export function Web3ModalProvider({
   children,
   initialState
 }: {
@@ -53,7 +53,9 @@ export function ContextProvider({
 
   return (
     <WagmiProvider config={config} initialState={initialState}>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        {children}
+        </QueryClientProvider>
     </WagmiProvider>
   )
 }
